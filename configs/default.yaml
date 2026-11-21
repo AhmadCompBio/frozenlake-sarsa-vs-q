@@ -1,0 +1,39 @@
+# COEN874 individual project — SARSA vs Q-learning on stochastic FrozenLake.
+# Every hyperparameter lives here so each run is config-driven (brief §6).
+
+env:
+  name: "SlipFrozenLake-4x4"
+  gymnasium_version: "1.0.0"
+  equivalence_ids: ["FrozenLake-v1"]   # verified at slip=0 and slip=2/3
+  desc: ["SFFF", "FHFH", "FFFH", "HFFG"]
+  max_steps: 200                        # truncation only; never zeroes the bootstrap
+  slips: [0.0, 0.1, 0.2, 0.6666666666666666]   # 4 levels of the controlled variation
+
+agent:
+  alphas: [0.02, 0.05, 0.1, 0.2]       # grid searched on tuning seeds (held out)
+  gamma: 0.99                           # agents; DP reference uses gamma = 1.0
+  eps_start: 1.0
+  eps_end: 0.05
+  eps_decay_frac: 0.6                   # linear decay over 60% of the step budget
+
+train:            # reported experiments
+  budget: 30000                         # env steps; identical for both methods
+  eval_every: 1000                      # periodic greedy evaluation
+  eval_episodes: 50                     # separate env instance, exploration off
+
+tuning:           # held-out tuning runs (cheaper, disjoint seeds from evaluation)
+  seeds: [0, 1, 2]                      # tuning seeds; REPORTED seeds are 100-109
+  budget: 15000
+  eval_every: 1500
+  eval_episodes: 30
+  select_metric: auc                    # one alpha per (slip, method)
+
+evaluation:
+  seeds: [100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+  threshold_frac: 0.9                   # steps-to-threshold = first step where
+                                        # success >= 0.9 * V*(s0)
+  final_eval_episodes: 200              # 200 greedy rollouts on a separate instance
+
+stats:
+  n_boot: 10000                         # bootstrap resamples for 95% CIs
+  alpha: 0.05                           # significance level, Holm within metric

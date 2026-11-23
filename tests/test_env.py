@@ -44,13 +44,15 @@ def test_terminal_states_are_absorbing():
 
 
 def test_dp_reference_values():
-    """Value iteration must give V*(s0) = 1.0 (deterministic) and ~0.74 (slippery)."""
+    """Value iteration must give V*(s0) = 1.0 (deterministic) and 14/17 ≈ 0.8235 (slippery)."""
     det = SlipFrozenLake(slip=0.0)
     V, _ = value_iteration(det.P, 16, 4, gamma=1.0)
     assert V[0] == pytest.approx(1.0, abs=1e-9)
     slip = SlipFrozenLake(slip=2 / 3)
     V, _ = value_iteration(slip.P, 16, 4, gamma=1.0)
-    assert 0.70 < V[0] < 0.78                     # published ~0.74 for 4x4 slippery
+    # Gymnasium FrozenLake-v1 slippery: V*(s0) = 14/17 ≈ 0.8235
+    # (the commonly-cited 0.74 is the *trained-agent* success rate, not the DP optimum)
+    assert V[0] == pytest.approx(14 / 17, abs=1e-6)
     Vr = uniform_random_value(slip.P, 16, 4)
     assert 0.0 <= Vr[0] < V[0]
 

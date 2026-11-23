@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Selected hyperparameters (chosen by mean AUC on tuning seeds \texttt{[0, 1, 2]}, reported on held-out seeds).}
+\label{tab:hparams}
+\begin{tabular}{llcc}
+\toprule
+Slip & Method & $\alpha$ & $\gamma$ / $\varepsilon$ / budget \\
+\midrule
+0.00 & SARSA & 0.02 & 0.99 / 1.0$\to$0.05 / 30000 \\
+0.00 & Q-learning & 0.02 & 0.99 / 1.0$\to$0.05 / 30000 \\
+0.10 & SARSA & 0.05 & 0.99 / 1.0$\to$0.05 / 30000 \\
+0.10 & Q-learning & 0.02 & 0.99 / 1.0$\to$0.05 / 30000 \\
+0.20 & SARSA & 0.20 & 0.99 / 1.0$\to$0.05 / 30000 \\
+0.20 & Q-learning & 0.10 & 0.99 / 1.0$\to$0.05 / 30000 \\
+2/3 & SARSA & 0.10 & 0.99 / 1.0$\to$0.05 / 30000 \\
+2/3 & Q-learning & 0.20 & 0.99 / 1.0$\to$0.05 / 30000 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Environment and MDP definition. Values are exact (value iteration, $\gamma=1$).}
+\label{tab:mdp}
+\begin{tabular}{ll}
+\toprule
+Property & Value \\
+\midrule
+Map & 4$\times$4 (SFFF/FHFH/FFFH/HFFG) \\
+States / actions & 16 / 4 (left, down, right, up) \\
+Transitions & $(1-p)$ intended, $p/2$ each perpendicular \\
+Reward & $+1$ on entering the goal, $0$ otherwise \\
+Discount $\gamma$ & 0.99 (agents), 1.0 (DP reference) \\
+Termination & goal or hole; truncation at 200 steps \\
+Observation & discrete state index \\
+\midrule
+Slip $p$ & $V^\star(s_0)$ / uniform-random $V^\pi(s_0)$ \\
+0.00 & 1.000 / 0.014 \\
+0.10 & 1.000 / 0.014 \\
+0.20 & 0.997 / 0.014 \\
+2/3 & 0.824 / 0.014 \\
+\bottomrule
+\end{tabular}
+\end{table}

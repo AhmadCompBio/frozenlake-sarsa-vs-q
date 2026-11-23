@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Main results over 10 seeds (mean [95\% bootstrap CI]). Steps-to-threshold is censored at the budget; $n$ counts seeds that reached 90\% of $V^\star$.}
+\label{tab:main}
+\begin{tabular}{llrrrrr}
+\toprule
+Slip & Method & Final success & AUC & Steps to thr. & Late sd & Gap \\
+\midrule
+0.00 & SARSA & 1.000 [1.000, 1.000] & 0.932 [0.906, 0.955] & 2000 (10/10) & 0.000 & +0.000 \\
+0.00 & Q-learning & 1.000 [1.000, 1.000] & 0.958 [0.945, 0.968] & 1000 (10/10) & 0.000 & +0.000 \\
+\midrule
+0.10 & SARSA & 0.811 [0.781, 0.840] & 0.746 [0.725, 0.768] & 15500 (6/10) & 0.034 & +0.189 \\
+0.10 & Q-learning & 0.794 [0.768, 0.822] & 0.758 [0.741, 0.780] & 4000 (4/10) & 0.036 & +0.206 \\
+\midrule
+0.20 & SARSA & 0.804 [0.778, 0.833] & 0.633 [0.619, 0.647] & 23000 (4/10) & 0.142 & +0.192 \\
+0.20 & Q-learning & 0.771 [0.690, 0.836] & 0.695 [0.669, 0.722] & 16000 (10/10) & 0.168 & +0.226 \\
+\midrule
+2/3 & SARSA & 0.681 [0.618, 0.721] & 0.434 [0.379, 0.475] & 15000 (9/10) & 0.092 & +0.142 \\
+2/3 & Q-learning & 0.624 [0.454, 0.754] & 0.604 [0.586, 0.622] & 10000 (10/10) & 0.133 & +0.200 \\
+
+\bottomrule
+\end{tabular}
+\end{table*}

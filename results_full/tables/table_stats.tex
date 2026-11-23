@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\small
+\caption{SARSA vs Q-learning: two-sided Mann--Whitney $U$ with Holm correction within each metric, and Cliff's $\delta$ ($n=10$ per group).}
+\label{tab:stats}
+\begin{tabular}{llrrrr}
+\toprule
+Slip & Metric & $U$ & $p$ & $p_{\text{Holm}}$ & Cliff's $\delta$ \\
+\midrule
+0.00 & final_success & 50.0 & 1.000 & 1.000 & +0.00 (negligible) \\
+0.00 & auc & 29.5 & 0.086 & 0.172 & -0.41 (medium) \\
+0.10 & final_success & 61.0 & 0.400 & 1.000 & +0.22 (small) \\
+0.10 & auc & 43.0 & 0.623 & 0.623 & -0.14 (negligible) \\
+0.20 & final_success & 50.5 & 1.000 & 1.000 & +0.01 (negligible) \\
+0.20 & auc & 9.0 & 0.002 & 0.007 & -0.82 (large) \\
+2/3 & final_success & 38.0 & 0.371 & 1.000 & -0.24 (small) \\
+2/3 & auc & 0.0 & 0.000 & 0.001 & -1.00 (large) \\
+\bottomrule
+\end{tabular}
+\end{table}

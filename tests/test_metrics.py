@@ -23,8 +23,11 @@ def test_steps_to_threshold_first_crossing():
 def test_bootstrap_ci_brackets_constant_mean():
     x = np.full(10, 0.42)
     lo, hi = bootstrap_ci(x, n_boot=2000, seed=0)
-    assert lo <= 0.42 <= hi
-    assert np.isclose(lo, 0.42) and np.isclose(hi, 0.42)
+    # For a constant array the CI collapses to that constant; exact equality fails
+    # only because np.mean of ten 0.42s differs from 0.42 by ~4e-16.
+    assert np.isclose(lo, 0.42, atol=1e-12)
+    assert np.isclose(hi, 0.42, atol=1e-12)
+    assert lo <= hi
 
 
 def test_cliffs_delta_extremes():
